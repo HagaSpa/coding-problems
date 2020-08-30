@@ -5,15 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch",
-            "type": "go",
+            "name": "Python: Current File",
+            "type": "python",
             "request": "launch",
-            "mode": "auto",
-            "program": "${fileDirname}",
-            "env": {},
-            "args": [
-                "../test.asm"
-            ]
+            "program": "${file}",
+            "console": "integratedTerminal"
         }
     ]
 }
