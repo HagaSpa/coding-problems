@@ -25,7 +25,6 @@ class Solution:
                     if word not in chked:
                         chked[word] = True
                         q.append((word, v+1))
-                d.pop(w)
         return 0
 
 
