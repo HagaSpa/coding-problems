@@ -1,3 +1,6 @@
+from math import floor
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -28,21 +31,33 @@ def traverse(root):
 
 if __name__ == "__main__":
     tree = [3,9,20,None,None,15,7]
+    
     # convert TreeNode
     root = TreeNode(val=tree[0])
     p = root
-    """
-    FIXME: invalid data structure in TreeNode.
-    """
-    for i,t in enumerate(tree[1:]):
-        tn = TreeNode(val=t)
-        if i%2==0: # even
-            p.left = tn
-        else:
-            p.right = tn
+    prev = root
+    tmp_i = 0
+    for i,v in enumerate(tree[1:], 1):
+        t = TreeNode(val=v)
+        # f is index of node
+        f = floor((i-1)/2)
+        # same node
+        if f == tmp_i:
             if i%2==0:
-                p = p.left
+                p.right = t
             else:
-                p = p.right
-    # debug TreeNode
-    traverse(root)
+                p.left = t
+        else:
+            # change node
+            if i%2==0:
+                p = prev.left
+                p.right = t
+                prev = p
+            else:
+                p = prev.right
+                p.left = t
+            tmp_i = f
+    
+    s = Solution()
+    ans = s.maxDepth(root=root)
+    print(ans)
