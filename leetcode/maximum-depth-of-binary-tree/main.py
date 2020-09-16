@@ -8,7 +8,9 @@ class TreeNode:
 
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-        pass
+        if root is None:
+            return 0
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
 
 def traverse(root):
@@ -29,6 +31,9 @@ if __name__ == "__main__":
     # convert TreeNode
     root = TreeNode(val=tree[0])
     p = root
+    """
+    FIXME: invalid data structure in TreeNode.
+    """
     for i,t in enumerate(tree[1:]):
         tn = TreeNode(val=t)
         if i%2==0: # even
