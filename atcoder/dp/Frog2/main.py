@@ -4,16 +4,16 @@ from typing import List
 def calc_min_cost(n: int, k: int, h: List[int]) -> int:
     dp = [float('inf')]*n
     dp[0] = 0
+    dp[1] = abs(h[1]-h[0])
+
     """
-    iが現在の足場
-    jが足場からk番目までのコストをそれぞれ計算するためのindex
+    iがコストを計算する現在の足場
+    jが現在の足場-k番目までのコストを計算するためのindex
     """
-    for i in range(0,n):
-        for j in range(1,k+1):
-            dest = i+j
-            if dest>=len(h): continue
-            cost = dp[i] + abs(h[dest]-h[i])
-            dp[dest] = min(cost, dp[dest])
+    for i in range(2,n):
+        for j in range(max(0,i-k),i):
+            cost = dp[j] + abs(h[i]-h[j])
+            dp[i] = min(cost, dp[i])
     return dp[-1]
 
 
