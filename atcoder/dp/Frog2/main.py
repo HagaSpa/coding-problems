@@ -12,8 +12,8 @@ def calc_min_cost(n: int, k: int, h: List[int]) -> int:
     """
     for i in range(2,n):
         for j in range(max(0,i-k),i):
-            cost = dp[j] + abs(h[i]-h[j])
-            dp[i] = min(cost, dp[i])
+            if dp[i] > dp[j] + abs(h[i]-h[j]):
+                dp[i] = dp[j] + abs(h[i]-h[j])
     return dp[-1]
 
 
