@@ -3,7 +3,7 @@ from typing import List
 
 def calc_max_value(n: int, w: int, items: List[List[int]]):
     """
-    docstring
+    AC
     """
     dp = [[0]*w for i in range(n)]
     for i in range(n):
