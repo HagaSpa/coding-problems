@@ -15,10 +15,7 @@ def calc_max_value(n: int, w: int, items: List[List[int]]):
                 continue
 
             # 前の最大値
-            prev = 0
-            if i>=0:
-                prev = dp[i-1][j]
-
+            prev = dp[i-1][j]
             # 現在の品物の価値
             v = items[i][1]
             
