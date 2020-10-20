@@ -5,7 +5,7 @@ def calc_max_value(n: int, w: int, items: List[List[int]]):
     """
     https://qiita.com/drken/items/dc53c683d6de8aeacf5a#%E3%82%AD%E3%83%BC%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88-1
     
-    上記を参考にしたコード. TLEだけど
+    上記を参考にしたコード. AC
     """
     # indexは1から値を入れていくため、縦横１つずつ余分に確保する
     dp = [[0]*(w+1) for i in range(n+1)]
