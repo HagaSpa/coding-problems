@@ -14,7 +14,8 @@ def calc_max_value(n: int, w: int, items: List[List[int]]):
             # 容量に収まるなら
             if j - items[i][0] >= 0:
                 dp[i+1][j] = max(dp[i][j], items[i][1] + dp[i][j-items[i][0]])
-            dp[i+1][j] = max(dp[i+1][j], dp[i][j])
+                continue
+            dp[i+1][j] = dp[i][j]
 
     return dp[n][w]
 
