@@ -14,14 +14,15 @@ def calc_max_value(n: int, w: int, items: List[List[int]]):
                 dp[i][j] = dp[i-1][j]
                 continue
 
-            # 前の最大値
+            # 前の最大値. 0で初期化してるからdp[-1][j]だとしても0
             prev = dp[i-1][j]
             # 現在の品物の価値
             v = items[i][1]
             
             # 残りスペースにおける最大値
+            # jが-1になると1つ前の行（品物）の最後の要素をamountに入れてしまうのでガード節を実装
             amount = 0
-            if i>=0 and j-items[i][0]>=0:
+            if j-items[i][0]>=0:
                 amount = dp[i-1][j-items[i][0]]
 
             dp[i][j] = max(prev, v+amount)
