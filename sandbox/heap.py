@@ -27,6 +27,27 @@ class Heap:
             self.heap[xi] = self.heap[pi]
             xi = pi
         self.heap[xi] = x
+    
+    def pop(self):
+        """
+        pop heap
+        """
+        # 最後尾の要素をrootに格納する。
+        x = self.heap.pop(-1)
+        self.heap[0] = x        
+
+        i = 0
+        # leafにたどり着くまで
+        while 2*i+1 < len(self.heap):
+            l = 2*i+1
+            r = 2*i+2
+            c = r if r < len(self.heap) and self.heap[r] > self.heap[l] else l
+            if self.heap[c] < self.heap[i]:
+                break
+            # change value
+            self.heap[i] = self.heap[c]
+            i = c
+        self.heap[i] = x
 
 
 if __name__ == "__main__":
@@ -34,3 +55,5 @@ if __name__ == "__main__":
     h.push(5)
     h.push(3)
     h.push(7)
+
+    h.pop()
